@@ -24,6 +24,10 @@
         <select id="state">
         	<option value=""selected>Select state</option>
         </select>
+        <label>District : </label>
+        <select id="district">
+        	<option value=""selected>Select District</option>
+        </select>
         <label>village : </label>
         <select id="village">
         	<option value="">Select village</option>
@@ -52,6 +56,10 @@ console.log(type);
   					$("#state").html(data);
   				}else if(type == "villagedata") {
   					$("#village").html(data);
+  				
+  				}else if(type == "districtdata") {
+  					$("#district").html(data);
+  				
   				}else if(type == "talukadata"){
 					$("#taluka").html(data);
 				}
@@ -81,11 +89,20 @@ console.log(type);
 
   		
   	})
-	  $("#state").on("change",function(){
-		var stateData = $("#state").val();
-		// console.log(stateData);
+	  $("#district").on("change",function(){
+		var stateData = $("#district").val();
+		console.log(stateData);
 		if(stateData !=""){
 			loadData("villagedata" , stateData)
+		}else{
+			
+		}
+	  })	
+	  $("#state").on("change",function(){
+		var stateData = $("#state").val();
+		console.log(stateData);
+		if(stateData !=""){
+			loadData("districtdata" , stateData)
 		}else{
 			
 		}

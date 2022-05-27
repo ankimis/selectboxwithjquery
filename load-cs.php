@@ -2,10 +2,6 @@
 
 include("db_connect.php");
 include("select_data.php");
-
-
-
-
 	$str = "";
 	switch ($_POST['type']) {
 		case "country_data": 	 
@@ -22,7 +18,6 @@ include("select_data.php");
 							}
 							break;
 		case "villagedata":
-			// print_r($_POST['id']);exit;
 							$all_state = getvillage($conn,$_POST['id']);
 							$str = '<option value="" selected disabled>Select village</option>';
 							for($i=0; $i < count($all_state);$i++){
@@ -34,6 +29,14 @@ include("select_data.php");
 							$str = '<option value="" selected disabled>Select State</option>';
 							for($i =0; $i< count($all_taluka); $i++){
 								$str .= "<option value='{$all_taluka[$i]['id']}'>{$all_taluka[$i]['taluka_name']}</option>";
+							}
+							break; 
+		case "districtdata":
+			// print_r($_POST['id']);exit;
+							$all_district =getdistrict($conn,$_POST['id']);
+							$str = '<option value="" selected disabled>Select State</option>';
+							for($i =0; $i< count($all_district); $i++){
+								$str .= "<option value='{$all_district[$i]['id']}'>{$all_district[$i]['district_name']}</option>";
 							}
 							break; 
 	}
